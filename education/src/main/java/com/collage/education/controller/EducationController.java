@@ -65,4 +65,12 @@ public class EducationController {
         ) {
         return educationServices.enrollStudentToSubject(subjectId, studentId);
     }
+
+    @PutMapping("/{subjectId}/teachers/{teacherId}")
+    public Subject assignTeacherToSubject(
+        @PathVariable Integer subjectId,
+        @PathVariable Integer teacherId
+        ) {
+        return educationServices.assignSubject(subjectId, teacherId);
+    }
 }

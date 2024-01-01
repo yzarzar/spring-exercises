@@ -45,9 +45,18 @@ public class EducationServices {
         @PathVariable Integer subjectId,
         @PathVariable Integer studentId
         ) {
-        Subject subject = subjectRepository.findById(studentId).get();
+        Subject subject = subjectRepository.findById(subjectId).get();
         Student student = studentRepository.findById(studentId).get();
         subject.enrollStudent(student);
+        return subjectRepository.save(subject);
+    }
+    public Subject assignSubject(
+         @PathVariable Integer subjectId,
+         @PathVariable Integer teacherId
+    ) {
+        Subject subject = subjectRepository.findById(subjectId).get();
+        Teacher teacher = teacherRepository.findById(teacherId).get();
+        subject.assignSubject(teacher);
         return subjectRepository.save(subject);
     }
 }
